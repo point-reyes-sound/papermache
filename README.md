@@ -6,7 +6,7 @@ Papermache clashes foundational scientific papers against each other to evaluate
 
 ## Features
 
-- **Iconic Paper Clashes**: Rigorous benchmark comparisons across Information Theory, Quantum Algorithms, Quantum Chemistry, and Fault Tolerance.
+- **Paper Clashes**: Rigorous benchmark comparisons across Information Theory, Quantum Algorithms, Quantum Chemistry, and Fault Tolerance.
 - **Dual PDF Side-by-Side Facsimile Viewer**: Inspect original historical and modern papers directly in high fidelity.
 - **Operator Information Analysis**: Invariant theorem decomposition featuring von Neumann operator critique and Boltzmann thermodynamic synthesis.
 - **First-Principles Engine**: Token classification and cross-entropy loss analysis (`engine/papermache_engine.py`).
