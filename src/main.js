@@ -356,9 +356,49 @@ class PapermacheApp {
     this.btnHeroClash = document.getElementById('btn-hero-clash');
     this.chipPresetBtns = document.querySelectorAll('.chip-preset-btn');
 
+    // Methodology Explainer Card & Triggers
+    this.methodologyCard = document.getElementById('methodology-card');
+    this.btnCloseMethodology = document.getElementById('btn-close-methodology');
+    this.howCalcTriggers = document.querySelectorAll('.how-calc-trigger');
+
     this.setupSliders();
     this.setupAccordions();
     this.setupHeroDropzone();
+    this.setupMethodologyExplainer();
+  }
+
+  setupMethodologyExplainer() {
+    if (!this.methodologyCard) return;
+
+    const toggleMethodology = (openState) => {
+      const willOpen = openState !== undefined ? openState : !this.methodologyCard.classList.contains('open');
+      if (willOpen) {
+        this.methodologyCard.classList.add('open');
+        setTimeout(() => {
+          this.methodologyCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 50);
+      } else {
+        this.methodologyCard.classList.remove('open');
+      }
+    };
+
+    if (this.howCalcTriggers) {
+      this.howCalcTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMethodology(true);
+        });
+      });
+    }
+
+    if (this.btnCloseMethodology) {
+      this.btnCloseMethodology.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMethodology(false);
+      });
+    }
   }
 
   setupHeroDropzone() {
