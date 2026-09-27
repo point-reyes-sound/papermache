@@ -19,11 +19,11 @@ const CASE_STUDIES = [
       score: 98.4,
       sub: "23 Foundational Theorems",
       invariants: [
-        "Proved 23 theorems establishing the universal mathematical foundation of communication.",
-        "Proved the Source Coding Theorem: Entropy H(X) = -∑ p_i log_2(p_i) is the exact physical limit of lossless compression.",
-        "Proved the Noisy-Channel Coding Theorem: Reliable communication is achievable at any rate R < C = lim log_2(N(T))/T.",
-        "Derived the Shannon-Hartley Capacity Law: C = W log_2(1 + P/N) for Gaussian channels.",
-        "Established Rate-Distortion Theory and Continuous Differential Entropy."
+        { text: "Proved 23 theorems establishing the universal mathematical foundation of communication.", page: 1, tag: "Sec. I" },
+        { text: "Proved the Source Coding Theorem: Entropy H(X) = -∑ p_i log_2(p_i) is the exact physical limit of lossless compression.", page: 11, tag: "Thm. 2" },
+        { text: "Proved the Noisy-Channel Coding Theorem: Reliable communication is achievable at any rate R < C.", page: 22, tag: "Thm. 9" },
+        { text: "Derived the Shannon-Hartley Capacity Law: C = W log_2(1 + P/N) for Gaussian channels.", page: 38, tag: "Thm. 17" },
+        { text: "Established Rate-Distortion Theory and Continuous Differential Entropy.", page: 48, tag: "Thm. 21" }
       ]
     },
     paperB: {
@@ -35,10 +35,11 @@ const CASE_STUDIES = [
       score: 74.2,
       sub: "Quantum Noiseless Coding",
       invariants: [
-        "Formally defined the 'Qubit' as the elementary quantum state |ψ⟩ = α|0⟩ + β|1⟩ in Hilbert space.",
-        "Employed von Neumann density operator ρ = ∑ p_i |φ_i⟩⟨φ_i| as an information resource.",
-        "Proved the Quantum Noiseless Coding Theorem: Asymptotically N states compress into M qubits when M/N > S(ρ) = -Tr(ρ log_2 ρ).",
-        "Defined quantum fidelity limit F = ⟨ψ|ρ_out|ψ⟩ → 1.0 under typical subspace projection."
+        { text: "Formally defined the 'Qubit' as the elementary quantum state |ψ⟩ = α|0⟩ + β|1⟩ in Hilbert space.", page: 1, tag: "Sec. II" },
+        { text: "Employed von Neumann density operator ρ = ∑ p_i |φ_i⟩⟨φ_i| as an information resource.", page: 1, tag: "Eq. (3)" },
+        { text: "Proved the Subspace Typicality Theorem: Effective quantum signal dimension is 2^{N S(ρ)}.", page: 1, tag: "Thm. 1" },
+        { text: "Proved the Quantum Noiseless Coding Theorem: States compress into M qubits when M/N > S(ρ) = -Tr(ρ log_2 ρ).", page: 2, tag: "Thm. 2" },
+        { text: "Defined quantum fidelity limit F = ⟨ψ|ρ_out|ψ⟩ → 1.0 under typical subspace projection.", page: 2, tag: "Eq. (13)" }
       ]
     },
     verdict: "Shannon (1948) Dominates (+24.2 ΔV)",
@@ -60,10 +61,10 @@ const CASE_STUDIES = [
       score: 96.8,
       sub: "Super-Polynomial Speedup",
       invariants: [
-        "Constructed the Quantum Fourier Transform (QFT) over Z_2^k and modular arithmetic rings.",
-        "Proved polynomial-time prime factorization in O((log N)^2 (log log N)) steps.",
-        "Demonstrated super-polynomial quantum speedup over the best classical General Number Field Sieve.",
-        "Proved the first catastrophic security vulnerability for classical RSA and Diffie-Hellman cryptosystems."
+        { text: "Constructed the Quantum Fourier Transform (QFT) over Z_2^k and modular arithmetic rings.", page: 5, tag: "Sec. 4" },
+        { text: "Proved polynomial-time prime factorization in O((log N)^2 (log log N)) steps.", page: 8, tag: "Sec. 5" },
+        { text: "Demonstrated super-polynomial quantum speedup over the best classical General Number Field Sieve.", page: 12, tag: "Thm. 5.1" },
+        { text: "Proved the first catastrophic security vulnerability for classical RSA and Diffie-Hellman cryptosystems.", page: 20, tag: "Sec. 7" }
       ]
     },
     paperB: {
@@ -75,10 +76,10 @@ const CASE_STUDIES = [
       score: 88.5,
       sub: "Quantum Matrix Inversion",
       invariants: [
-        "Formulated the HHL quantum linear system solver for A|x⟩ = |b⟩.",
-        "Achieved exponential scaling advantage: O(κ^2 s^2 log(N)/ε) vs classical O(N s κ).",
-        "Pioneered Hamiltonian simulation combined with Quantum Phase Estimation for matrix reciprocal eigenvalue inversion ∑ λ_j^(-1) |u_j⟩⟨u_j|.",
-        "Established the algorithmic cornerstone for modern quantum machine learning and differential equation solvers."
+        { text: "Formulated the HHL quantum linear system solver for A|x⟩ = |b⟩.", page: 1, tag: "Eq. (1)" },
+        { text: "Achieved exponential scaling advantage: O(κ^2 s^2 log(N)/ε) vs classical O(N s κ).", page: 2, tag: "Thm. 1" },
+        { text: "Pioneered Hamiltonian simulation combined with Quantum Phase Estimation for matrix reciprocal eigenvalue inversion ∑ λ_j^(-1) |u_j⟩⟨u_j|.", page: 3, tag: "Eq. (4)" },
+        { text: "Established the algorithmic cornerstone for modern quantum machine learning and differential equation solvers.", page: 5, tag: "Sec. IV" }
       ]
     },
     verdict: "Shor (1994) Wins (+8.3 ΔV)",
@@ -100,10 +101,10 @@ const CASE_STUDIES = [
       score: 84.2,
       sub: "Experimental NISQ VQE",
       invariants: [
-        "Demonstrated the first hybrid quantum-classical Variational Quantum Eigensolver (VQE).",
-        "Mapped molecular Hamiltonian expectation values ⟨H⟩ = ∑ h_i ⟨σ_i⟩ onto parameterized quantum states U(θ)|0⟩.",
-        "Experimentally calculated the ground-state energy curve of He-H+ molecule to 1.6 kcal/mol chemical accuracy.",
-        "Bypassed deep coherent circuit depth limitations on Noisy Intermediate-Scale Quantum (NISQ) processors."
+        { text: "Demonstrated the first hybrid quantum-classical Variational Quantum Eigensolver (VQE).", page: 1, tag: "Fig. 1" },
+        { text: "Mapped molecular Hamiltonian expectation values ⟨H⟩ = ∑ h_i ⟨σ_i⟩ onto parameterized quantum states U(θ)|0⟩.", page: 2, tag: "Eq. (1)" },
+        { text: "Experimentally calculated the ground-state energy curve of He-H+ molecule to 1.6 kcal/mol chemical accuracy.", page: 3, tag: "Fig. 2" },
+        { text: "Bypassed deep coherent circuit depth limitations on Noisy Intermediate-Scale Quantum (NISQ) processors.", page: 5, tag: "Sec. III" }
       ]
     },
     paperB: {
@@ -115,10 +116,10 @@ const CASE_STUDIES = [
       score: 89.6,
       sub: "Comprehensive Formal Synthesis",
       invariants: [
-        "Unifies the complete fermion-to-qubit operator mappings: Jordan-Wigner, Bravyi-Kitaev, and parity transformations.",
-        "Provides rigorous scaling analysis of Unitary Coupled Cluster (UCCSD) and multireference active spaces.",
-        "Derives exact phase-estimation resource bounds: O(N^4) vs Trotter-Suzuki error bounds.",
-        "Formalizes quantum error mitigation, zero-noise extrapolation, and symmetry-conserving ansatz bounds across all modern chemistry benchmarks."
+        { text: "Unifies the complete fermion-to-qubit operator mappings: Jordan-Wigner, Bravyi-Kitaev, and parity transformations.", page: 6, tag: "Sec. II.B" },
+        { text: "Provides rigorous scaling analysis of Unitary Coupled Cluster (UCCSD) and multireference active spaces.", page: 14, tag: "Sec. IV" },
+        { text: "Derives exact phase-estimation resource bounds: O(N^4) vs Trotter-Suzuki error bounds.", page: 22, tag: "Sec. VI" },
+        { text: "Formalizes quantum error mitigation, zero-noise extrapolation, and symmetry-conserving ansatz bounds across all modern chemistry benchmarks.", page: 35, tag: "Sec. VIII" }
       ]
     },
     verdict: "McArdle et al. (2020) Wins (+5.4 ΔV)",
@@ -140,11 +141,11 @@ const CASE_STUDIES = [
       score: 94.8,
       sub: "QBE-SCF & Entropic Regularization",
       invariants: [
-        "Derived the Quantum Boltzmann Equation self-consistent-field (QBE-SCF) propagating the 1-RDM P in atomic orbital basis.",
-        "Introduced the Bhatnagar-Gross-Krook (BGK) collision operator driving the density matrix to instantaneous Fermi-Dirac equilibrium target P_0(F).",
-        "Proved stationarity condition [F, P] = 0 satisfies Hartree-Fock while permitting non-idempotent steady states P^2 ≠ P.",
-        "Zero-temperature kinetic ergodicity fractionalizes degenerate active spaces, recovering the Generalized Valence Bond (GVB) limit for H_3 symmetric dissociation.",
-        "Finite-temperature entropic regularization resolves conical intersections in BeH_2 and H_4 (D_2h → D_4h → D_2h) from a real-valued single-reference density without multireference wavefunctions."
+        { text: "Derived the Quantum Boltzmann Equation self-consistent-field (QBE-SCF) propagating the 1-RDM P in atomic orbital basis.", page: 2, tag: "Eq. (4)" },
+        { text: "Introduced the Bhatnagar-Gross-Krook (BGK) collision operator driving the density matrix to instantaneous Fermi-Dirac equilibrium target P_0(F).", page: 3, tag: "Eq. (8)" },
+        { text: "Proved stationarity condition [F, P] = 0 satisfies Hartree-Fock while permitting non-idempotent steady states P^2 ≠ P.", page: 4, tag: "Eq. (12)" },
+        { text: "Zero-temperature kinetic ergodicity fractionalizes degenerate active spaces, recovering the Generalized Valence Bond (GVB) limit for H_3 symmetric dissociation.", page: 6, tag: "Fig. 3" },
+        { text: "Finite-temperature entropic regularization resolves conical intersections in BeH_2 and H_4 (D_2h → D_4h → D_2h) from a real-valued single-reference density without multireference wavefunctions.", page: 9, tag: "Sec. IV" }
       ]
     },
     paperB: {
@@ -156,10 +157,10 @@ const CASE_STUDIES = [
       score: 91.2,
       sub: "ph-AFQMC Trial State Dilemma",
       invariants: [
-        "Systematic benchmark of Phaseless Auxiliary-Field Quantum Monte Carlo (ph-AFQMC) on active-space models of [2Fe-2S]^2+, [4Fe-4S]^2+, and [4Fe-4S]^4+ clusters.",
-        "Exposed the severe 'symmetry dilemma' where mean-field UHF yields proliferating broken-symmetry minima with variations > 15 kcal/mol.",
-        "Demonstrated that the lowest-energy UHF determinant is frequently NOT the optimal trial state for ph-AFQMC projection.",
-        "Proved trial wave function nodal bias remains the principal accuracy bottleneck in polynomial-scaling quantum Monte Carlo."
+        { text: "Systematic benchmark of Phaseless Auxiliary-Field Quantum Monte Carlo (ph-AFQMC) on active-space models of [2Fe-2S]^2+, [4Fe-4S]^2+, and [4Fe-4S]^4+ clusters.", page: 1, tag: "Sec. 1" },
+        { text: "Exposed the severe 'symmetry dilemma' where mean-field UHF yields proliferating broken-symmetry minima with variations > 15 kcal/mol.", page: 1, tag: "Sec. 2" },
+        { text: "Demonstrated that the lowest-energy UHF determinant is frequently NOT the optimal trial state for ph-AFQMC projection.", page: 2, tag: "Finding 1" },
+        { text: "Proved trial wave function nodal bias remains the principal accuracy bottleneck in polynomial-scaling quantum Monte Carlo.", page: 2, tag: "Sec. 4" }
       ]
     },
     verdict: "Chakraborty (2026) Wins (+3.6 ΔV)",
@@ -181,10 +182,10 @@ const CASE_STUDIES = [
       score: 97.2,
       sub: "Topological Anyon Code",
       invariants: [
-        "Invented the Toric Code Hamiltonian: H = -J_e ∑_s A_s - J_m ∑_p B_p with star and plaquette stabilizer operators.",
-        "Introduced the Surface Code architecture that dominates modern superconducting quantum hardware.",
-        "Proved that quantum information can be stored in non-local topological degrees of freedom immune to local perturbation.",
-        "Formulated fault tolerance via non-Abelian anyon braiding and topological quantum field theory."
+        { text: "Invented the Toric Code Hamiltonian: H = -J_e ∑_s A_s - J_m ∑_p B_p with star and plaquette stabilizer operators.", page: 3, tag: "Eq. (3.1)" },
+        { text: "Introduced the Surface Code architecture that dominates modern superconducting quantum hardware.", page: 7, tag: "Sec. 4" },
+        { text: "Proved that quantum information can be stored in non-local topological degrees of freedom immune to local perturbation.", page: 12, tag: "Thm. 4.2" },
+        { text: "Formulated fault tolerance via non-Abelian anyon braiding and topological quantum field theory.", page: 22, tag: "Sec. 6" }
       ]
     },
     paperB: {
@@ -196,9 +197,9 @@ const CASE_STUDIES = [
       score: 95.1,
       sub: "First 9-Qubit Code Proof",
       invariants: [
-        "Proved that quantum error correction is physically possible despite continuous unitary noise and no-cloning theorem.",
-        "Constructed the 9-qubit code: |0_L⟩ = 1/(2√2) (|000⟩+|111⟩)(|000⟩+|111⟩)(|000⟩+|111⟩).",
-        "Disentangled bit-flip (X) errors from phase-flip (Z) errors using syndrome measurements without collapsing superposition."
+        { text: "Proved that quantum error correction is physically possible despite continuous unitary noise and no-cloning theorem.", page: 1, tag: "Sec. 1" },
+        { text: "Constructed the 9-qubit code: |0_L⟩ = 1/(2√2) (|000⟩+|111⟩)(|000⟩+|111⟩)(|000⟩+|111⟩).", page: 2, tag: "Eq. (4)" },
+        { text: "Disentangled bit-flip (X) errors from phase-flip (Z) errors using syndrome measurements without collapsing superposition.", page: 3, tag: "Sec. 2" }
       ]
     },
     verdict: "Kitaev (1997) Wins (+2.1 ΔV)",
@@ -226,6 +227,8 @@ class PapermacheApp {
     this.paperBarTitleB = document.getElementById('paper-bar-title-b');
     this.paperExternalA = document.getElementById('paper-external-a');
     this.paperExternalB = document.getElementById('paper-external-b');
+    this.pageBadgeA = document.getElementById('page-badge-a');
+    this.pageBadgeB = document.getElementById('page-badge-b');
     this.pdfFrameA = document.getElementById('pdf-frame-a');
     this.pdfFrameB = document.getElementById('pdf-frame-b');
 
@@ -250,7 +253,6 @@ class PapermacheApp {
     this.critiqueVonny = document.getElementById('critique-vonny');
     this.critiqueBoltz = document.getElementById('critique-boltz');
 
-    // Accordion click handlers
     this.setupAccordions();
   }
 
@@ -301,12 +303,28 @@ class PapermacheApp {
 
       tr.addEventListener('click', () => {
         this.loadCaseStudy(study.id);
-        // Smooth scroll down to the dual papers
         document.getElementById('case-study-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
       this.tbody.appendChild(tr);
     });
+  }
+
+  jumpToInvariant(target, pageNum, tag) {
+    if (target === 'A') {
+      this.pdfFrameA.src = `${this.currentStudy.paperA.pdfUrl}#page=${pageNum}&view=FitH`;
+      this.pageBadgeA.textContent = `p. ${pageNum} (${tag})`;
+      this.pageBadgeA.classList.add('highlight-pulse');
+      setTimeout(() => this.pageBadgeA.classList.remove('highlight-pulse'), 1400);
+    } else {
+      this.pdfFrameB.src = `${this.currentStudy.paperB.pdfUrl}#page=${pageNum}&view=FitH`;
+      this.pageBadgeB.textContent = `p. ${pageNum} (${tag})`;
+      this.pageBadgeB.classList.add('highlight-pulse');
+      setTimeout(() => this.pageBadgeB.classList.remove('highlight-pulse'), 1400);
+    }
+
+    // Scroll up smoothly to view the PDF frame
+    document.getElementById('case-study-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   loadCaseStudy(id) {
@@ -324,8 +342,10 @@ class PapermacheApp {
     this.paperBarTitleB.textContent = `${study.paperB.title} (${study.paperB.venue})`;
     this.paperExternalA.href = study.paperA.pdfUrl;
     this.paperExternalB.href = study.paperB.pdfUrl;
-    this.pdfFrameA.src = `${study.paperA.pdfUrl}#view=FitH`;
-    this.pdfFrameB.src = `${study.paperB.pdfUrl}#view=FitH`;
+    this.pageBadgeA.textContent = `p. 1`;
+    this.pageBadgeB.textContent = `p. 1`;
+    this.pdfFrameA.src = `${study.paperA.pdfUrl}#page=1&view=FitH`;
+    this.pdfFrameB.src = `${study.paperB.pdfUrl}#page=1&view=FitH`;
 
     // Scoreboard
     this.pillarNameA.textContent = study.paperA.title;
@@ -339,12 +359,43 @@ class PapermacheApp {
     this.deltaVDisplay.textContent = study.deltaVal;
     this.verdictDisplay.textContent = study.verdict;
 
-    // Invariant Accordions
+    // Invariant Accordions with Jump Buttons
     this.accNameA.textContent = study.paperA.title;
     this.accNameB.textContent = study.paperB.title;
 
-    this.invariantsListA.innerHTML = study.paperA.invariants.map(inv => `<li>${inv}</li>`).join('');
-    this.invariantsListB.innerHTML = study.paperB.invariants.map(inv => `<li>${inv}</li>`).join('');
+    this.invariantsListA.innerHTML = '';
+    study.paperA.invariants.forEach(inv => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="invariant-text-wrap">${inv.text}</span>
+        <button class="jump-to-page-btn" title="Jump to page ${inv.page}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          p. ${inv.page} (${inv.tag})
+        </button>
+      `;
+      li.querySelector('.jump-to-page-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.jumpToInvariant('A', inv.page, inv.tag);
+      });
+      this.invariantsListA.appendChild(li);
+    });
+
+    this.invariantsListB.innerHTML = '';
+    study.paperB.invariants.forEach(inv => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span class="invariant-text-wrap">${inv.text}</span>
+        <button class="jump-to-page-btn" title="Jump to page ${inv.page}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          p. ${inv.page} (${inv.tag})
+        </button>
+      `;
+      li.querySelector('.jump-to-page-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.jumpToInvariant('B', inv.page, inv.tag);
+      });
+      this.invariantsListB.appendChild(li);
+    });
 
     this.critiqueVonny.textContent = `"${study.vonnyCritique}"`;
     this.critiqueBoltz.textContent = `"${study.boltzCritique}"`;
