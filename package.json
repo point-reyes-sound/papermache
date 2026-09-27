@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && mkdir -p ../point-reyes-sound/public/papermache-standalone && cp -r dist/* ../point-reyes-sound/public/papermache-standalone/",
     "preview": "vite preview"
   },
   "devDependencies": {

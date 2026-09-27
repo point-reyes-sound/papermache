@@ -804,5 +804,23 @@ class PapermacheApp {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  // Detect if running inside iframe container in Point Reyes Sound
+  if (window.top !== window.self) {
+    document.body.classList.add('is-embedded');
+  }
+
+  const tabInteractive = document.getElementById('tab-interactive');
+  if (tabInteractive) {
+    tabInteractive.addEventListener('click', (e) => {
+      if (window.top !== window.self) {
+        e.preventDefault();
+        try {
+          window.top.postMessage({ type: 'SWITCH_APP_TAB', tab: 'interactive' }, '*');
+        } catch (err) {}
+        window.top.location.href = '/interactive';
+      }
+    });
+  }
+
   new PapermacheApp();
 });
