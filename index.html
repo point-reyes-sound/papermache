@@ -87,6 +87,44 @@
 
       <!-- Analysis & Scoreboard Area (Appears on Scroll) -->
       <div class="analysis-scroll-area" id="analysis-area">
+        <!-- Metric Sensitivity Tuner (Pareto Frontier) -->
+        <div class="tuner-card" id="metric-tuner">
+          <div class="tuner-header">
+            <span class="tuner-title">⚙ Metric Sensitivity Tuner (Pareto Frontier)</span>
+            <button id="btn-reset-sliders" class="btn-reset-sliders">Reset Defaults</button>
+          </div>
+          <div class="sliders-grid">
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="slider-alpha">α (Invariant Proof Weight):</label>
+                <span class="slider-val" id="val-alpha">2.0</span>
+              </div>
+              <input type="range" id="slider-alpha" min="0.0" max="5.0" step="0.1" value="2.0" />
+            </div>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="slider-beta">β (Generative Reach):</label>
+                <span class="slider-val" id="val-beta">0.8</span>
+              </div>
+              <input type="range" id="slider-beta" min="0.0" max="2.0" step="0.1" value="0.8" />
+            </div>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="slider-gamma">γ (Boilerplate Penalty):</label>
+                <span class="slider-val" id="val-gamma">1.5</span>
+              </div>
+              <input type="range" id="slider-gamma" min="0.0" max="4.0" step="0.1" value="1.5" />
+            </div>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <label for="slider-mu">μ (Mutual Info Asymmetry):</label>
+                <span class="slider-val" id="val-mu">10.0</span>
+              </div>
+              <input type="range" id="slider-mu" min="0.0" max="30.0" step="1.0" value="10.0" />
+            </div>
+          </div>
+        </div>
+
         <!-- Scoreboard Bar -->
         <div class="scoreboard-hero">
           <div class="score-pillar pillar-a">
