@@ -30,5 +30,3 @@ npm run dev
 # (Optional) Run Python calculation engine
 python3 engine/server.py 8080
 ```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser for the local development server, or navigate directly to the production site at [https://pointreyessound.com/papermache](https://pointreyessound.com/papermache).
