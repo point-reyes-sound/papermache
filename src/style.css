@@ -136,11 +136,12 @@ body.point-reyes-theme {
 
 .hero-heading h2 {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: 2.3rem;
   font-weight: 700;
   color: #fff;
-  line-height: 1.25;
-  margin-bottom: 6px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
 }
 
 .hero-heading p {
