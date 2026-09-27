@@ -96,7 +96,7 @@ body.point-reyes-theme {
   letter-spacing: 0.04em;
 }
 
-/* ICONIC PAPER CLASHES TABLE */
+/* PAPER CLASHES TABLE */
 .table-section {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
