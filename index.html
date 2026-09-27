@@ -11,6 +11,29 @@
 </head>
 <body class="point-reyes-theme">
   <div id="app">
+    <!-- TOP-LEVEL UNIFIED APP TABS -->
+    <header class="papermache-topbar" id="papermache-topbar">
+      <div class="topbar-inner">
+        <a href="/" class="topbar-brand" title="Point Reyes Sound Homepage">
+          <img src="./images/PRS_logo_v2.jpeg" alt="Point Reyes Sound" class="topbar-logo" onerror="this.src='/PRS_logo_v2.jpeg'" />
+          <span class="topbar-brand-name">POINT REYES SOUND</span>
+        </a>
+
+        <nav class="top-level-app-tabs" role="tablist" aria-label="Application Tabs">
+          <a href="/papermache" class="app-tab-btn active" role="tab" aria-selected="true" id="tab-papermache" title="Paper Mâché // Quantum Information Clash Engine">
+            <span class="tab-pill-dot dot-papermache"></span> Paper Mâché
+          </a>
+          <a href="/interactive" class="app-tab-btn" role="tab" id="tab-interactive" title="Launch 3D Quantum Gas Reaction Simulator (Q-BOLTZ)">
+            <span class="tab-pill-dot dot-interactive"></span> Quantum Gas
+          </a>
+        </nav>
+
+        <div class="topbar-actions">
+          <a href="/#research" class="topbar-research-link">Research</a>
+        </div>
+      </div>
+    </header>
+
     <!-- Center-Aligned Clean Brand Header -->
     <header class="app-header-centered">
       <div class="brand-centered">

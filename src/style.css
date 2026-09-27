@@ -57,6 +57,137 @@ body.point-reyes-theme {
   gap: 24px;
 }
 
+/* ==========================================================================
+   TOP-LEVEL UNIFIED APP TABS
+   ========================================================================== */
+.papermache-topbar {
+  width: 100%;
+  background: rgba(2, 5, 3, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: -24px -28px 12px -28px;
+  width: calc(100% + 56px);
+  padding: 12px 28px;
+}
+
+.topbar-inner {
+  max-width: 1720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-emerald);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.topbar-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+  object-fit: cover;
+}
+
+.top-level-app-tabs {
+  display: flex;
+  align-items: center;
+  background: rgba(11, 18, 33, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.16);
+  border-radius: 30px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.app-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.app-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.app-tab-btn.active {
+  background: rgba(16, 185, 129, 0.18);
+  color: #ffffff;
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
+}
+
+.tab-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-interactive {
+  background: var(--accent-emerald);
+  box-shadow: 0 0 8px var(--accent-emerald);
+}
+
+.dot-papermache {
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-research-link {
+  font-family: var(--font-sans, system-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.topbar-research-link:hover {
+  border-color: var(--accent-emerald);
+  color: var(--accent-emerald);
+}
+
+/* Hide topbar when embedded in parent container */
+body.is-embedded .papermache-topbar {
+  display: none !important;
+}
+
+body.is-embedded #app {
+  padding-top: 24px;
+}
+
 /* Center-Aligned Clean Brand Header */
 .app-header-centered {
   display: flex;
