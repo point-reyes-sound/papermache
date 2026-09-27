@@ -19,6 +19,69 @@
       </div>
     </header>
 
+    <!-- HERO DUAL ARXIV / PDF DROPZONE CENTERPIECE -->
+    <section class="hero-dropzone-section" id="hero-dropzone">
+      <div class="hero-centerpiece-container">
+        <div class="hero-heading">
+          <span class="hero-eyebrow">AUTOMATED REFEREE & VALUE MATRIX</span>
+          <h2>Benchmark Your Paper Against Your Rival's</h2>
+          <p>Paste arXiv IDs or drop PDFs to calculate asymmetric information value, invariant payload, and theorem dominance.</p>
+        </div>
+
+        <div class="dropzone-duel-grid">
+          <!-- Left Dropzone: Your Paper -->
+          <div class="dropzone-box box-challenger-a" id="dropzone-a">
+            <div class="dropzone-header">
+              <span class="box-tag a-tag">CHALLENGER 1 (YOUR WORK)</span>
+              <span class="box-status" id="status-a">Ready</span>
+            </div>
+            <div class="dropzone-body">
+              <input type="text" id="input-arxiv-a" class="arxiv-input" placeholder="e.g. arXiv:2608.14979 or URL" value="arXiv:2608.14979" />
+              <div class="drop-divider"><span>OR DROP PDF</span></div>
+              <label class="file-drop-label" id="label-drop-a">
+                <input type="file" id="file-input-a" accept=".pdf" class="hidden-file-input" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span class="drop-text" id="drop-text-a">Drop .pdf here or click to browse</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Center Clash Action Trigger -->
+          <div class="clash-trigger-column">
+            <div class="vs-glow-circle">VS</div>
+            <button id="btn-hero-clash" class="btn-hero-clash" title="Clash Papers and calculate Information Value">
+              <span class="bolt-icon">⚡</span> Clash Papers
+            </button>
+          </div>
+
+          <!-- Right Dropzone: Rival Paper -->
+          <div class="dropzone-box box-challenger-b" id="dropzone-b">
+            <div class="dropzone-header">
+              <span class="box-tag b-tag">CHALLENGER 2 (RIVAL WORK)</span>
+              <span class="box-status" id="status-b">Ready</span>
+            </div>
+            <div class="dropzone-body">
+              <input type="text" id="input-arxiv-b" class="arxiv-input" placeholder="e.g. JCTC 2026 / Shee et al." value="Danilov, Shee et al. (JCTC 2026)" />
+              <div class="drop-divider"><span>OR DROP PDF</span></div>
+              <label class="file-drop-label" id="label-drop-b">
+                <input type="file" id="file-input-b" accept=".pdf" class="hidden-file-input" />
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span class="drop-text" id="drop-text-b">Drop .pdf here or click to browse</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick-Fill Preset Chips -->
+        <div class="quick-preset-chips">
+          <span class="chips-label">Quick Benchmarks:</span>
+          <button class="chip-preset-btn active" data-preset="qbe_vs_afqmc">Chakraborty (2608.14979) vs. Shee (JCTC 2026)</button>
+          <button class="chip-preset-btn" data-preset="info_theory">Shannon (1948) vs. Schumacher (1995)</button>
+          <button class="chip-preset-btn" data-preset="quantum_algos">Shor (1994) vs. HHL (2009)</button>
+        </div>
+      </div>
+    </section>
+
     <!-- PAPER CLASHES TABLE -->
     <section class="table-section">
       <div class="table-header-clean">
