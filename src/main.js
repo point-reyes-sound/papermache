@@ -563,12 +563,11 @@ class PapermacheApp {
   }
 
   executeHeroClash() {
-    const origHtml = this.btnHeroClash.innerHTML;
-    this.btnHeroClash.innerHTML = '<span class="bolt-icon">⚡</span> Clashing Invariants...';
+    this.btnHeroClash.classList.add('clashing');
     this.btnHeroClash.style.opacity = '0.85';
 
     setTimeout(() => {
-      this.btnHeroClash.innerHTML = origHtml;
+      this.btnHeroClash.classList.remove('clashing');
       this.btnHeroClash.style.opacity = '1';
     }, 900);
 
