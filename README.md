@@ -11,7 +11,14 @@ Papermache clashes foundational scientific papers against each other to evaluate
 - **Operator Information Analysis**: Invariant theorem decomposition featuring von Neumann operator critique and Boltzmann thermodynamic synthesis.
 - **First-Principles Engine**: Token classification and cross-entropy loss analysis (`engine/papermache_engine.py`).
 
-## Quick Start
+## Live Deployment
+
+Experience Paper Mâché live on the Point Reyes Sound platform:  
+**[https://pointreyessound.com/papermache](https://pointreyessound.com/papermache)**
+
+---
+
+## Local Development
 
 ```bash
 # Install dependencies
@@ -24,4 +31,4 @@ npm run dev
 python3 engine/server.py 8080
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser for the local development server, or navigate directly to the production site at [https://pointreyessound.com/papermache](https://pointreyessound.com/papermache).
