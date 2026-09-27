@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papermache // Iconic Paper Clashes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="point-reyes-theme">
+  <div id="app">
+    <!-- Center-Aligned Clean Brand Header -->
+    <header class="app-header-centered">
+      <div class="brand-centered">
+        <h1 class="brand-title-clean">PAPER<span>MÂCHÉ</span></h1>
+        <p class="brand-tagline">Quantum Chemistry & Information Theory Clash Engine</p>
+      </div>
+    </header>
+
+    <!-- ICONIC PAPER CLASHES TABLE -->
+    <section class="table-section">
+      <div class="table-header-clean">
+        <h2>Iconic Paper Clashes</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table class="clash-table" id="clash-matrix-table">
+          <thead>
+            <tr>
+              <th>Matchup Domain</th>
+              <th>Paper A (Challenger 1)</th>
+              <th>Paper B (Challenger 2)</th>
+              <th>Core Invariant Payload</th>
+              <th>Generative Reach</th>
+              <th>Info Value Score</th>
+              <th>Tournament Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="case-studies-tbody">
+            <!-- Dynamically populated and sorted by Delta V descending -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CASE STUDY INSPECTION SECTION -->
+    <section class="case-study-inspection-section" id="case-study-section">
+      <!-- Side-by-Side Dual Original Papers (Full Screen Focus) -->
+      <div class="dual-papers-container">
+        <!-- Paper A Frame -->
+        <div class="paper-frame-container" id="frame-container-a">
+          <div class="paper-frame-bar">
+            <span class="paper-tag-a">PAPER A</span>
+            <span class="paper-bar-title" id="paper-bar-title-a">Shannon (1948)</span>
+            <a id="paper-external-a" href="/papers/shannon1948.pdf" target="_blank" class="open-ext-btn" title="Open full PDF">↗ Open PDF</a>
+          </div>
+          <div class="pdf-embed-box">
+            <iframe id="pdf-frame-a" src="/papers/shannon1948.pdf#view=FitH" type="application/pdf"></iframe>
+          </div>
+        </div>
+
+        <!-- Paper B Frame -->
+        <div class="paper-frame-container" id="frame-container-b">
+          <div class="paper-frame-bar">
+            <span class="paper-tag-b">PAPER B</span>
+            <span class="paper-bar-title" id="paper-bar-title-b">Schumacher (1995)</span>
+            <a id="paper-external-b" href="/papers/schumacher1995.pdf" target="_blank" class="open-ext-btn" title="Open full PDF">↗ Open PDF</a>
+          </div>
+          <div class="pdf-embed-box">
+            <iframe id="pdf-frame-b" src="/papers/schumacher1995.pdf#view=FitH" type="application/pdf"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Cue -->
+      <div class="scroll-cue">
+        <span>↓ Scroll down for score and invariant analysis ↓</span>
+      </div>
+
+      <!-- Analysis & Scoreboard Area (Appears on Scroll) -->
+      <div class="analysis-scroll-area" id="analysis-area">
+        <!-- Scoreboard Bar -->
+        <div class="scoreboard-hero">
+          <div class="score-pillar pillar-a">
+            <span class="pillar-label" id="pillar-name-a">Shannon (1948)</span>
+            <div class="pillar-value" id="pillar-score-a">98.4</div>
+            <span class="pillar-sub" id="pillar-sub-a">23 Foundational Theorems</span>
+          </div>
+
+          <div class="score-vs-block">
+            <span class="vs-text">VS</span>
+            <div class="delta-v-badge" id="delta-v-display">+24.2 ΔV (Paper A)</div>
+            <div class="verdict-banner-text" id="verdict-display">Shannon (1948) Dominates</div>
+          </div>
+
+          <div class="score-pillar pillar-b">
+            <span class="pillar-label" id="pillar-name-b">Schumacher (1995)</span>
+            <div class="pillar-value" id="pillar-score-b">74.2</div>
+            <span class="pillar-sub" id="pillar-sub-b">Quantum Noiseless Coding</span>
+          </div>
+        </div>
+
+        <!-- Clickable Dropdown Boxes (Accordions) -->
+        <div class="dropdown-boxes-stack">
+          <!-- Dropdown 1: Paper A Invariants -->
+          <div class="accordion-item" id="acc-paper-a">
+            <button class="accordion-header" id="acc-btn-a">
+              <span class="acc-title">
+                <span class="acc-badge a-badge">Paper A Invariants</span>
+                <span class="acc-name" id="acc-name-a">Shannon (1948)</span>
+              </span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul class="invariants-bullet-list" id="invariants-list-a"></ul>
+            </div>
+          </div>
+
+          <!-- Dropdown 2: Paper B Invariants -->
+          <div class="accordion-item" id="acc-paper-b">
+            <button class="accordion-header" id="acc-btn-b">
+              <span class="acc-title">
+                <span class="acc-badge b-badge">Paper B Invariants</span>
+                <span class="acc-name" id="acc-name-b">Schumacher (1995)</span>
+              </span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <ul class="invariants-bullet-list" id="invariants-list-b"></ul>
+            </div>
+          </div>
+
+          <!-- Dropdown 3: Operator Information Analysis -->
+          <div class="accordion-item" id="acc-operator">
+            <button class="accordion-header" id="acc-btn-operator">
+              <span class="acc-title">
+                <span class="acc-badge op-badge">Operator Information Analysis</span>
+                <span class="acc-name">von Neumann & Boltzmann Critique</span>
+              </span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="accordion-body">
+              <div class="operator-critique-content">
+                <div class="critique-entry">
+                  <h4>von Neumann's Operator Analysis</h4>
+                  <p id="critique-vonny"></p>
+                </div>
+                <div class="critique-entry">
+                  <h4>Boltzmann's Thermodynamic Synthesis</h4>
+                  <p id="critique-boltz"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
