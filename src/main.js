@@ -340,8 +340,248 @@ class PapermacheApp {
 
     this.btnResetSliders = document.getElementById('btn-reset-sliders');
 
+    // Hero Dropzone elements
+    this.inputArxivA = document.getElementById('input-arxiv-a');
+    this.inputArxivB = document.getElementById('input-arxiv-b');
+    this.fileInputA = document.getElementById('file-input-a');
+    this.fileInputB = document.getElementById('file-input-b');
+    this.labelDropA = document.getElementById('label-drop-a');
+    this.labelDropB = document.getElementById('label-drop-b');
+    this.dropzoneBoxA = document.getElementById('dropzone-a');
+    this.dropzoneBoxB = document.getElementById('dropzone-b');
+    this.dropTextA = document.getElementById('drop-text-a');
+    this.dropTextB = document.getElementById('drop-text-b');
+    this.statusA = document.getElementById('status-a');
+    this.statusB = document.getElementById('status-b');
+    this.btnHeroClash = document.getElementById('btn-hero-clash');
+    this.chipPresetBtns = document.querySelectorAll('.chip-preset-btn');
+
     this.setupSliders();
     this.setupAccordions();
+    this.setupHeroDropzone();
+  }
+
+  setupHeroDropzone() {
+    this.customFileA = null;
+    this.customPdfUrlA = null;
+    this.customFileB = null;
+    this.customPdfUrlB = null;
+
+    // File input handlers
+    if (this.fileInputA) {
+      this.fileInputA.addEventListener('change', () => {
+        if (this.fileInputA.files && this.fileInputA.files[0]) {
+          this.handleFileSelect('A', this.fileInputA.files[0]);
+        }
+      });
+    }
+
+    if (this.fileInputB) {
+      this.fileInputB.addEventListener('change', () => {
+        if (this.fileInputB.files && this.fileInputB.files[0]) {
+          this.handleFileSelect('B', this.fileInputB.files[0]);
+        }
+      });
+    }
+
+    // Drag and Drop handlers for Dropzone A
+    const boxA = this.dropzoneBoxA;
+    if (boxA) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        boxA.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          boxA.classList.add('drag-over');
+        });
+      });
+      ['dragleave', 'drop'].forEach(eventName => {
+        boxA.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          boxA.classList.remove('drag-over');
+        });
+      });
+      boxA.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        if (dt && dt.files && dt.files[0]) {
+          this.handleFileSelect('A', dt.files[0]);
+        }
+      });
+    }
+
+    // Drag and Drop handlers for Dropzone B
+    const boxB = this.dropzoneBoxB;
+    if (boxB) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        boxB.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          boxB.classList.add('drag-over');
+        });
+      });
+      ['dragleave', 'drop'].forEach(eventName => {
+        boxB.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          boxB.classList.remove('drag-over');
+        });
+      });
+      boxB.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        if (dt && dt.files && dt.files[0]) {
+          this.handleFileSelect('B', dt.files[0]);
+        }
+      });
+    }
+
+    // Quick benchmark preset chips
+    if (this.chipPresetBtns) {
+      this.chipPresetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.chipPresetBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const preset = btn.dataset.preset;
+
+          if (preset === 'qbe_vs_afqmc') {
+            if (this.inputArxivA) this.inputArxivA.value = 'arXiv:2608.14979 (Chakraborty et al.)';
+            if (this.inputArxivB) this.inputArxivB.value = 'Danilov, Shee et al. (JCTC 2026)';
+          } else if (preset === 'info_theory') {
+            if (this.inputArxivA) this.inputArxivA.value = 'Shannon (1948)';
+            if (this.inputArxivB) this.inputArxivB.value = 'Schumacher (1995)';
+          } else if (preset === 'quantum_algos') {
+            if (this.inputArxivA) this.inputArxivA.value = 'arXiv:quant-ph/9508027 (Shor 1994)';
+            if (this.inputArxivB) this.inputArxivB.value = 'arXiv:0811.3171 (HHL 2009)';
+          }
+
+          this.resetDropzoneStatus('A');
+          this.resetDropzoneStatus('B');
+          this.loadCaseStudy(preset);
+          const target = document.getElementById('case-study-section');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    }
+
+    // Clash button handler
+    if (this.btnHeroClash) {
+      this.btnHeroClash.addEventListener('click', () => {
+        this.executeHeroClash();
+      });
+    }
+  }
+
+  resetDropzoneStatus(side) {
+    if (side === 'A') {
+      this.customFileA = null;
+      this.customPdfUrlA = null;
+      if (this.dropTextA) this.dropTextA.textContent = 'Drop .pdf here or click to browse';
+      if (this.statusA) {
+        this.statusA.textContent = 'Ready';
+        this.statusA.style.color = '';
+      }
+    } else {
+      this.customFileB = null;
+      this.customPdfUrlB = null;
+      if (this.dropTextB) this.dropTextB.textContent = 'Drop .pdf here or click to browse';
+      if (this.statusB) {
+        this.statusB.textContent = 'Ready';
+        this.statusB.style.color = '';
+      }
+    }
+  }
+
+  handleFileSelect(side, file) {
+    if (!file) return;
+    if (!file.name.toLowerCase().endsWith('.pdf') && file.type !== 'application/pdf') {
+      alert('Please upload a valid PDF document.');
+      return;
+    }
+
+    const objUrl = URL.createObjectURL(file);
+    const sizeMb = (file.size / (1024 * 1024)).toFixed(2);
+    const cleanName = file.name.replace(/\.[^/.]+$/, "");
+
+    if (side === 'A') {
+      this.customFileA = file;
+      this.customPdfUrlA = objUrl;
+      if (this.dropTextA) this.dropTextA.textContent = `📄 ${file.name} (${sizeMb} MB)`;
+      if (this.statusA) {
+        this.statusA.textContent = 'PDF Loaded';
+        this.statusA.style.color = 'var(--accent-cyan)';
+      }
+      if (this.inputArxivA) this.inputArxivA.value = cleanName;
+    } else {
+      this.customFileB = file;
+      this.customPdfUrlB = objUrl;
+      if (this.dropTextB) this.dropTextB.textContent = `📄 ${file.name} (${sizeMb} MB)`;
+      if (this.statusB) {
+        this.statusB.textContent = 'PDF Loaded';
+        this.statusB.style.color = 'var(--accent-gold)';
+      }
+      if (this.inputArxivB) this.inputArxivB.value = cleanName;
+    }
+  }
+
+  executeHeroClash() {
+    const origHtml = this.btnHeroClash.innerHTML;
+    this.btnHeroClash.innerHTML = '<span class="bolt-icon">⚡</span> Clashing Invariants...';
+    this.btnHeroClash.style.opacity = '0.85';
+
+    setTimeout(() => {
+      this.btnHeroClash.innerHTML = origHtml;
+      this.btnHeroClash.style.opacity = '1';
+    }, 900);
+
+    const valA = (this.inputArxivA ? this.inputArxivA.value.trim().toLowerCase() : '');
+    const valB = (this.inputArxivB ? this.inputArxivB.value.trim().toLowerCase() : '');
+
+    // 1. If custom local PDFs were dropped on either side:
+    if (this.customPdfUrlA) {
+      this.pdfFrameA.src = `${this.customPdfUrlA}#page=1&view=FitH`;
+      this.paperBarTitleA.textContent = this.inputArxivA.value || this.customFileA.name;
+      this.paperExternalA.href = this.customPdfUrlA;
+      this.pageBadgeA.textContent = 'p. 1 (Custom PDF)';
+    }
+
+    if (this.customPdfUrlB) {
+      this.pdfFrameB.src = `${this.customPdfUrlB}#page=1&view=FitH`;
+      this.paperBarTitleB.textContent = this.inputArxivB.value || this.customFileB.name;
+      this.paperExternalB.href = this.customPdfUrlB;
+      this.pageBadgeB.textContent = 'p. 1 (Custom PDF)';
+    }
+
+    // 2. If neither was a custom PDF, match against case studies
+    if (!this.customPdfUrlA && !this.customPdfUrlB) {
+      if (valA.includes('2608.14979') || valA.includes('chakraborty') || valB.includes('shee')) {
+        this.loadCaseStudy('qbe_vs_afqmc');
+      } else if (valA.includes('shor') || valA.includes('9508027') || valB.includes('hhl') || valB.includes('0811.3171')) {
+        this.loadCaseStudy('quantum_algos');
+      } else if (valA.includes('shannon') || valB.includes('schumacher') || valA.includes('1948')) {
+        this.loadCaseStudy('info_theory');
+      } else if (valA.includes('kitaev') || valB.includes('toric')) {
+        this.loadCaseStudy('topological_codes');
+      } else if (valA.includes('peruzzo') || valB.includes('mcardle') || valA.includes('vqe')) {
+        this.loadCaseStudy('vqe_ground_state');
+      }
+    }
+
+    // Highlight the paper frames to confirm live update
+    const containerA = document.getElementById('frame-container-a');
+    const containerB = document.getElementById('frame-container-b');
+    if (containerA) {
+      containerA.classList.add('highlight-pulse');
+      setTimeout(() => containerA.classList.remove('highlight-pulse'), 1200);
+    }
+    if (containerB) {
+      containerB.classList.add('highlight-pulse');
+      setTimeout(() => containerB.classList.remove('highlight-pulse'), 1200);
+    }
+
+    // Smooth scroll down to the dual reader and scoreboard
+    const targetSection = document.getElementById('case-study-section');
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   setupSliders() {
