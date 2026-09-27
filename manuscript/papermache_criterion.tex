@@ -1,0 +1,134 @@
+\documentclass[twocolumn,10pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{geometry}
+\usepackage{cite}
+\usepackage{braket}
+
+\geometry{margin=0.75in}
+
+\title{\textbf{\LARGE Papermache: Quantitative Evaluation of Scientific Information Value per Manuscript}}
+\author{\textbf{Point Reyes Sound, Inc.}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We define the mathematical goal and tournament comparison metric for \textsc{Papermache}, a system evaluating the invariant information value of competing scientific manuscripts on shared theoretical foundations.
+\end{abstract}
+
+\section{Goal}
+Given two scientific manuscripts $W_A$ and $W_B$ addressing the same physical, chemical, or informational domain $\mathcal{D}$, the goal of \textsc{Papermache} is to compute the asymmetric information value operator:
+\begin{equation}
+\Delta \mathcal{V}(A, B) = \mathcal{V}(W_A) - \mathcal{V}(W_B)
+\end{equation}
+determining which work delivers greater non-tautological constraint on the physical state space per unit of communication overhead.
+
+\section{Information Value Metric}
+
+\subsection{Irreducible Invariant Payload}
+Let a manuscript $W$ be decomposed into an ordered set of formal propositions $\mathcal{T} = \{T_1, T_2, \dots, T_K\}$. The invariant payload $\Omega(W)$ is:
+\begin{equation}
+\Omega(W) = \sum_{k=1}^K w(T_k) \cdot \mathbb{I}(T_k \notin \mathcal{K}_0)
+\end{equation}
+where $\mathcal{K}_0$ is the prior literature knowledge base, $\mathbb{I}(\cdot)$ is the indicator function, and $w(T_k)$ weights operator assertions:
+\begin{equation}
+w(T_k) = 
+\begin{cases}
+3.0 & \text{Formal Theorem / Conservation Law} \\
+2.5 & \text{Hamiltonian / Variational Algorithm} \\
+2.0 & \text{Asymptotic Scaling Bound } O(f(N)) \\
+1.5 & \text{Quantitative Benchmark Invariant} \\
+0.0 & \text{Tautology / Qualitative Preamble}
+\end{cases}
+\end{equation}
+
+\subsection{Downstream Generative Reach}
+The generative reach $\Gamma(T_k)$ quantifies the logarithm of the Hilbert space dimension or parameter volume constrained by invariant $T_k$:
+\begin{equation}
+\Gamma(T_k) = \log_2 \left( \frac{\mathrm{Vol}(\mathcal{S}_{\text{unconstrained}})}{\mathrm{Vol}(\mathcal{S}_{\text{constrained}}(T_k))} \right)
+\end{equation}
+
+\subsection{Directed Mutual Information via Cross-Perplexity}
+Under an autoregressive compression policy $\pi_\theta$, the empirical entropy of manuscript $B$ is:
+\begin{equation}
+\mathcal{L}(B) = -\frac{1}{|B|} \sum_{t=1}^{|B|} \log_2 \pi_\theta(b_t \mid b_{<t})
+\end{equation}
+The conditional loss of $B$ given prior conditioning on manuscript $A$ is:
+\begin{equation}
+\mathcal{L}(B \mid A) = -\frac{1}{|B|} \sum_{t=1}^{|B|} \log_2 \pi_\theta(b_t \mid A, b_{<t})
+\end{equation}
+The directed empirical mutual information $\hat{I}(A \to B)$ is:
+\begin{equation}
+\hat{I}(A \to B) = \max\left(0, \mathcal{L}(B) - \mathcal{L}(B \mid A)\right)
+\end{equation}
+
+\subsection{Boilerplate Fluff Penalty}
+Let $N_{\text{pulp}}(W)$ denote the token count of discursive rhetoric, boilerplate citations, and non-operative transitional phrases, with total token length $|W|$. The fluff ratio is:
+\begin{equation}
+\mathcal{P}(W) = \frac{N_{\text{pulp}}(W)}{|W|}
+\end{equation}
+
+\subsection{Total Composite Information Value}
+The global information value $\mathcal{V}(W)$ is:
+\begin{equation}
+\mathcal{V}(W) = \alpha \cdot \Omega(W) + \beta \cdot \sum_{k=1}^K \Gamma(T_k) - \gamma \cdot \mathcal{P}(W)
+\end{equation}
+with normalized scaling parameters $\alpha = 2.0$, $\beta = 0.8$, and $\gamma = 1.5$.
+
+\subsection{Minimax Tournament Decision}
+The net tournament superiority margin is:
+\begin{equation}
+\Delta \mathcal{V}(A, B) = \mathcal{V}(W_A) - \mathcal{V}(W_B) + \mu \left( \frac{\hat{I}(A \to B)}{|W_A|} - \frac{\hat{I}(B \to A)}{|W_B|} \right)
+\end{equation}
+where $\mu > 0$ enforces the penalty for asymmetric redundancy.
+
+\begin{thebibliography}{9}
+\bibitem{shannon1948}
+C.~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \textit{Bell System Technical Journal}, 27(3):379--423, 1948.
+
+\bibitem{vonneumann1932}
+J.~von Neumann.
+\newblock \textit{Mathematische Grundlagen der Quantenmechanik}.
+\newblock Springer, Berlin, 1932.
+
+\bibitem{schumacher1995}
+B.~Schumacher.
+\newblock Quantum coding.
+\newblock \textit{Physical Review A}, 51(4):2738--2747, 1995.
+
+\bibitem{shor1994}
+P.~W. Shor.
+\newblock Algorithms for quantum computation: Discrete logarithms and factoring.
+\newblock In \textit{Proceedings of 35th Annual Symposium on Foundations of Computer Science}, pages 124--134. IEEE, 1994.
+
+\bibitem{kitaev2003}
+A.~Y. Kitaev.
+\newblock Fault-tolerant quantum computation by anyons.
+\newblock \textit{Annals of Physics}, 303(1):2--30, 2003.
+
+\bibitem{peruzzo2014}
+A.~Peruzzo, J.~McClean, P.~Shadbolt, M.-H. Yung, X.-Q. Zhou, P.~J. Love, A.~Aspuru-Guzik, and J.~L. O'Brien.
+\newblock A variational eigenvalue solver on a photonic quantum processor.
+\newblock \textit{Nature Communications}, 5:4213, 2014.
+
+\bibitem{mcardle2020}
+S.~McArdle, S.~Endo, A.~Aspuru-Guzik, S.~C. Benjamin, and X.~Yuan.
+\newblock Quantum computational chemistry.
+\newblock \textit{Reviews of Modern Physics}, 92(1):015003, 2020.
+
+\bibitem{chakraborty2026}
+R.~Chakraborty.
+\newblock Quantum {B}oltzmann equation self-consistent-field for the entropic regularization of mean-field singularities.
+\newblock \textit{arXiv:2608.14979}, 2026.
+
+\bibitem{shee2026}
+D.~Danilov, B.~Ganoe, L.~Otis, Z.~Gong, Z.~Lu, and J.~Shee.
+\newblock Selecting optimal unrestricted {H}artree--{F}ock trial wave functions for phaseless auxiliary-field quantum {M}onte {C}arlo: Accuracy and limitations in modeling three iron--sulfur clusters.
+\newblock \textit{Journal of Chemical Theory and Computation}, 22(16):8274--8287, 2026.
+\end{thebibliography}
+
+\end{document}
