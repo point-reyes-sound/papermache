@@ -1,7 +1,7 @@
-# Papermache: Axiomatic Evaluation of Scientific Information Value
+# Paper Mâché: Axiomatic Evaluation of Scientific Information Value
 
 **Point Reyes Sound, Inc.**  
-`theory@pointreyessound.com`
+`romit@pointreyessound.com`
 
 ---
 
@@ -35,9 +35,9 @@ $$w(T_k) = \begin{cases} 3.0, & \text{Closed-form theorem or global conservation
 ---
 
 ### 1.2 Downstream Generative Reach ($\Gamma$)
-Let $\mathcal{S}$ denote the unconstrained state space or physical parameter manifold of domain $\mathcal{D}$, equipped with measure $\mu_{\mathcal{S}}$. The generative reach $\Gamma(T_k)$ measures the reduction of thermodynamic entropy or parameter uncertainty enforced by invariant $T_k$:
+Let $\mathcal{S}_u$ denote the unconstrained state space or physical parameter manifold of domain $\mathcal{D}$, equipped with measure $\mu_{\mathcal{S}}$, and let $\mathcal{S}_c(T_k) \subseteq \mathcal{S}_u$ denote the constrained submanifold physically or algorithmically permitted under invariant $T_k$. The generative reach $\Gamma(T_k)$ measures the reduction of thermodynamic entropy or parameter uncertainty enforced by invariant $T_k$:
 
-$$\Gamma(T_k) = \log_2 \left( \frac{\mu_{\mathcal{S}}(\mathcal{S}_{\text{unconstrained}})}{\mu_{\mathcal{S}}(\mathcal{S}_{\text{constrained}}(T_k))} \right)$$
+$$\Gamma(T_k) = \log_2 \left( \frac{\mu_{\mathcal{S}}(\mathcal{S}_u)}{\mu_{\mathcal{S}}(\mathcal{S}_c(T_k))} \right)$$
 
 For a universal channel capacity law or polynomial speedup theorem, $\mu_{\mathcal{S}}(\mathcal{S}_{\text{constrained}}) \to 0$, yielding $\Gamma \gg 1$. For localized single-point benchmarks, $\Gamma \sim O(1)$.
 
@@ -86,11 +86,11 @@ where $\alpha = 2.0$, $\beta = 0.8$, and $\gamma = 1.5$ represent Pareto-calibra
 
 | Matchup Domain | Paper A | Paper B | $\Omega_A / \Omega_B$ | $\Gamma_A / \Gamma_B$ | $\mathcal{P}_A / \mathcal{P}_B$ | $\mathcal{V}_A \text{ vs } \mathcal{V}_B$ | $\Delta \mathcal{V}$ |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **Information Theory** | Shannon (1948) | Schumacher (1995) | 42.0 / 28.0 | 20.0 / 12.0 | 1.2 / 3.4 | 98.4 vs 74.2 | **+24.2** (Shannon) |
-| **Quantum Algorithms** | Shor (1994) | HHL (2009) | 40.0 / 34.0 | 22.0 / 18.0 | 1.5 / 2.2 | 94.6 vs 86.3 | **+8.3** (Shor) |
-| **Electronic Structure** | Chakraborty (2026) | Shee et al. (2026) | 36.0 / 32.0 | 18.0 / 15.0 | 1.4 / 2.8 | 91.8 vs 88.2 | **+3.6** (Chakraborty) |
-| **Variational NISQ** | Peruzzo et al. (2014) | McArdle et al. (2020) | 38.0 / 30.0 | 19.0 / 14.0 | 1.8 / 4.2 | 92.5 vs 87.1 | **+5.4** (Peruzzo) |
-| **Error Correction** | Kitaev (1997) | Shor (1995) | 35.0 / 32.0 | 17.0 / 15.0 | 1.6 / 2.0 | 90.3 vs 88.2 | **+2.1** (Kitaev) |
+| **Information Theory** | Shannon (1948) | Schumacher (1995) | 42.0 / 28.0 | 20.0 / 12.0 | 1.2 / 3.4 | 98.4 vs 74.2 | **+24.2** |
+| **Quantum Algorithms** | Shor (1994) | HHL (2009) | 40.0 / 34.0 | 22.0 / 18.0 | 1.5 / 2.2 | 94.6 vs 86.3 | **+8.3** |
+| **Electronic Structure** | Chakraborty (2026) | Shee et al. (2026) | 36.0 / 32.0 | 18.0 / 15.0 | 1.4 / 2.8 | 91.8 vs 88.2 | **+3.6** |
+| **Variational NISQ** | Peruzzo et al. (2014) | McArdle et al. (2020) | 38.0 / 30.0 | 19.0 / 14.0 | 1.8 / 4.2 | 92.5 vs 87.1 | **+5.4** |
+| **QEC** | Kitaev (1997) | Shor (1995) | 35.0 / 32.0 | 17.0 / 15.0 | 1.6 / 2.0 | 90.3 vs 88.2 | **+2.1** |
 
 ---
 
