@@ -9,9 +9,9 @@
 
 \geometry{margin=0.75in}
 
-\title{\textbf{\LARGE Papermache: Axiomatic Evaluation of Scientific Information Value}}
+\title{\textbf{\LARGE Paper M\^ach\'e: Axiomatic Evaluation of Scientific Information Value}}
 \author{\textbf{Point Reyes Sound, Inc.} \\
-\texttt{theory@pointreyessound.com}}
+\texttt{romit@pointreyessound.com}}
 \date{\today}
 
 \begin{document}
@@ -23,11 +23,30 @@ We formulate an axiomatic operator for evaluating the intrinsic scientific infor
 
 \section{Foundational Theory}
 
-Let $\mathcal{D}$ denote a physical, chemical, or computational domain. Let $W_A, W_B \in \mathcal{D}$ represent two competing scientific manuscripts with token lengths $|W_A|$ and $|W_B|$. The objective of \textsc{Papermache} is to evaluate the directed tournament operator:
+Let $\mathcal{D}$ denote a physical, chemical, or computational domain. Let $W_A, W_B \in \mathcal{D}$ represent two competing scientific manuscripts with token lengths $|W_A|$ and $|W_B|$. The objective of \textsc{Paper M\^ach\'e} is to evaluate the directed tournament operator:
 \begin{equation}
 \Delta \mathcal{V}(A, B) = \mathcal{V}(W_A) - \mathcal{V}(W_B) + \mu \, \Delta \hat{I}(A \parallel B)
 \end{equation}
 where $\mathcal{V}(W)$ is the intrinsic information value of manuscript $W$, $\Delta \hat{I}(A \parallel B)$ is the normalized directed mutual information asymmetry, and $\mu > 0$ is the redundancy coupling constant.
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllccccc}
+\toprule
+\textbf{Matchup Domain} & \textbf{Paper A} & \textbf{Paper B} & $\mathbf{\Omega_A / \Omega_B}$ & $\mathbf{\Gamma_A / \Gamma_B}$ & $\mathbf{\mathcal{P}_A / \mathcal{P}_B}$ & $\mathbf{\mathcal{V}_A \text{ vs } \mathcal{V}_B}$ & $\mathbf{\Delta \mathcal{V}}$ \\
+\midrule
+Information Theory & Shannon (1948) & Schumacher (1995) & $42.0 / 28.0$ & $20.0 / 12.0$ & $1.2 / 3.4$ & $98.4 \text{ vs } 74.2$ & $+24.2$ \\
+Quantum Algorithms & Shor (1994) & HHL (2009) & $40.0 / 34.0$ & $22.0 / 18.0$ & $1.5 / 2.2$ & $94.6 \text{ vs } 86.3$ & $+8.3$ \\
+Electronic Structure & Chakraborty (2026) & Shee et al. (2026) & $36.0 / 32.0$ & $18.0 / 15.0$ & $1.4 / 2.8$ & $91.8 \text{ vs } 88.2$ & $+3.6$ \\
+Variational NISQ & Peruzzo et al. (2014) & McArdle et al. (2020) & $38.0 / 30.0$ & $19.0 / 14.0$ & $1.8 / 4.2$ & $92.5 \text{ vs } 87.1$ & $+5.4$ \\
+QEC & Kitaev (1997) & Shor (1995) & $35.0 / 32.0$ & $17.0 / 15.0$ & $1.6 / 2.0$ & $90.3 \text{ vs } 88.2$ & $+2.1$ \\
+\bottomrule
+\end{tabular}
+\caption{Empirical evaluation of tournament ratings and invariant metrics across five canonical domains. Positive $\Delta \mathcal{V}$ denotes Paper A dominance.}
+\label{tab:tournament}
+\end{table*}
 
 \subsection{Irreducible Invariant Payload ($\Omega$)}
 Let manuscript $W$ be parsed into an ordered sequence of formal propositions $\mathcal{T} = \{T_1, T_2, \dots, T_K\}$. The invariant payload $\Omega(W)$ quantifies non-tautological operator assertions established relative to the prior corpus $\mathcal{K}_0$:
@@ -47,11 +66,11 @@ w(T_k) =
 \end{equation}
 
 \subsection{Downstream Generative Reach ($\Gamma$)}
-Let $\mathcal{S}$ denote the unconstrained state space or physical parameter manifold of domain $\mathcal{D}$, equipped with measure $\mu_{\mathcal{S}}$. The generative reach $\Gamma(T_k)$ measures the reduction of thermodynamic entropy or parameter uncertainty enforced by invariant $T_k$:
+Let $\mathcal{S}_u$ denote the unconstrained state space or physical parameter manifold of domain $\mathcal{D}$, equipped with measure $\mu_{\mathcal{S}}$. Let $\mathcal{S}_c(T_k) \subseteq \mathcal{S}_u$ represent the constrained submanifold of states physically or algorithmically permitted under invariant $T_k$. The generative reach $\Gamma(T_k)$ measures the reduction of thermodynamic entropy or parameter uncertainty enforced by invariant $T_k$:
 \begin{equation}
-\Gamma(T_k) = \log_2 \left( \frac{\mu_{\mathcal{S}}(\mathcal{S}_{\text{unconstrained}})}{\mu_{\mathcal{S}}(\mathcal{S}_{\text{constrained}}(T_k))} \right)
+\Gamma(T_k) = \log_2 \left( \frac{\mu_{\mathcal{S}}(\mathcal{S}_u)}{\mu_{\mathcal{S}}(\mathcal{S}_c(T_k))} \right)
 \end{equation}
-For a universal channel capacity law or polynomial speedup theorem, $\mu_{\mathcal{S}}(\mathcal{S}_{\text{constrained}}) \to 0$, yielding $\Gamma \gg 1$. For localized single-point benchmarks, $\Gamma \sim O(1)$.
+where $\mathcal{S}_u$ and $\mathcal{S}_c$ denote the unconstrained and constrained state manifolds, respectively. For a universal channel capacity law or polynomial speedup theorem, $\mu_{\mathcal{S}}(\mathcal{S}_c) \to 0$, yielding $\Gamma \gg 1$. For localized single-point benchmarks, $\Gamma \sim O(1)$.
 
 \subsection{Boilerplate Overhead Penalty ($\mathcal{P}$)}
 Let $N_{\text{pulp}}(W)$ denote the token cardinality of qualitative preamble, repetitive literature synthesis, and non-operational rhetoric within manuscript $W$. The overhead fraction is:
@@ -86,24 +105,7 @@ The scalar information value $\mathcal{V}(W)$ is:
 \end{equation}
 where $\alpha = 2.0$, $\beta = 0.8$, and $\gamma = 1.5$ represent Pareto-calibrated sensitivity baselines.
 
-\begin{table*}[t]
-\centering
-\small
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{lllccccc}
-\toprule
-\textbf{Matchup Domain} & \textbf{Paper A} & \textbf{Paper B} & $\mathbf{\Omega_A / \Omega_B}$ & $\mathbf{\Gamma_A / \Gamma_B}$ & $\mathbf{\mathcal{P}_A / \mathcal{P}_B}$ & $\mathbf{\mathcal{V}_A \text{ vs } \mathcal{V}_B}$ & $\mathbf{\Delta \mathcal{V}}$ \\
-\midrule
-Information Theory & Shannon (1948) & Schumacher (1995) & $42.0 / 28.0$ & $20.0 / 12.0$ & $1.2 / 3.4$ & $98.4 \text{ vs } 74.2$ & $+24.2$ (Shannon) \\
-Quantum Algorithms & Shor (1994) & HHL (2009) & $40.0 / 34.0$ & $22.0 / 18.0$ & $1.5 / 2.2$ & $94.6 \text{ vs } 86.3$ & $+8.3$ (Shor) \\
-Electronic Structure & Chakraborty (2026) & Shee et al. (2026) & $36.0 / 32.0$ & $18.0 / 15.0$ & $1.4 / 2.8$ & $91.8 \text{ vs } 88.2$ & $+3.6$ (Chakraborty) \\
-Variational NISQ & Peruzzo et al. (2014) & McArdle et al. (2020) & $38.0 / 30.0$ & $19.0 / 14.0$ & $1.8 / 4.2$ & $92.5 \text{ vs } 87.1$ & $+5.4$ (Peruzzo) \\
-Quantum Error Correction & Kitaev (1997) & Shor (1995) & $35.0 / 32.0$ & $17.0 / 15.0$ & $1.6 / 2.0$ & $90.3 \text{ vs } 88.2$ & $+2.1$ (Kitaev) \\
-\bottomrule
-\end{tabular}
-\caption{Empirical evaluation of tournament ratings and invariant metrics across five canonical domains.}
-\label{tab:tournament}
-\end{table*}
+
 
 \section{Case Studies}
 
@@ -149,7 +151,7 @@ Quantum Error Correction & Kitaev (1997) & Shor (1995) & $35.0 / 32.0$ & $17.0 /
 
 \section{Applications}
 
-\textsc{Papermache} is deployed in three distinct operational workflows:
+\textsc{Paper M\^ach\'e} is deployed in three distinct operational workflows:
 \begin{enumerate}
 \item \textbf{Automated Pre-Submission Refereeing:} Authors drop their preprint against benchmark literature to detect rhetorical inflation ($\mathcal{P}$), quantify theorem density ($\Omega$), and evaluate theoretical state-space coverage ($\Gamma$) prior to journal submission.
 \item \textbf{Editorial Desk-Reject Calibration:} Academic editors evaluate whether a submitted manuscript establishes novel invariant operators beyond prior art $\mathcal{K}_0$, or whether it collapses under directed mutual information redundancy ($\Delta \hat{I} < 0$).
