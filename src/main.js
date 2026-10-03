@@ -377,6 +377,26 @@ class PapermacheApp {
     this.setupHeroDropzone();
     this.setupMethodologyExplainer();
     this.setupMobilePaperSwitcher();
+    this.setupCustomClashToggle();
+  }
+
+  setupCustomClashToggle() {
+    this.btnToggleCustom = document.getElementById('btn-toggle-custom');
+    this.heroDropzone = document.getElementById('hero-dropzone');
+
+    if (this.btnToggleCustom && this.heroDropzone) {
+      this.btnToggleCustom.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isCollapsed = this.heroDropzone.classList.toggle('collapsed');
+        this.btnToggleCustom.setAttribute('aria-expanded', !isCollapsed);
+        this.btnToggleCustom.innerHTML = isCollapsed
+          ? '<span class="toggle-icon">＋</span> Custom arXiv IDs / Upload PDF'
+          : '<span class="toggle-icon">✕</span> Close Custom Uploader';
+        if (!isCollapsed) {
+          this.heroDropzone.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
   }
 
   setupMobilePaperSwitcher() {
@@ -543,6 +563,12 @@ class PapermacheApp {
           } else if (preset === 'quantum_algos') {
             if (this.inputArxivA) this.inputArxivA.value = 'arXiv:quant-ph/9508027 (Shor 1994)';
             if (this.inputArxivB) this.inputArxivB.value = 'arXiv:0811.3171 (HHL 2009)';
+          } else if (preset === 'vqe_bench') {
+            if (this.inputArxivA) this.inputArxivA.value = 'Peruzzo et al. (Nature Comm. 2014)';
+            if (this.inputArxivB) this.inputArxivB.value = 'McArdle et al. (Rev. Mod. Phys. 2020)';
+          } else if (preset === 'qec_surface') {
+            if (this.inputArxivA) this.inputArxivA.value = 'Kitaev (Russ. Math. Surv. 1997)';
+            if (this.inputArxivB) this.inputArxivB.value = 'Shor (Phys. Rev. A 1995)';
           }
 
           this.resetDropzoneStatus('A');
