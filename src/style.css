@@ -222,11 +222,11 @@ body.is-embedded #app {
 .brand-tagline {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #06152d;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #cbd5e1;
   letter-spacing: 0.03em;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8), 0 0 16px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 16px rgba(245, 158, 11, 0.25);
 }
 
 /* HERO DUAL ARXIV / PDF DROPZONE CENTERPIECE */
@@ -1410,4 +1410,736 @@ body.is-embedded #app {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-gold);
+}
+
+
+/* Mobile Components Base / Desktop States */
+.mobile-paper-switcher {
+  display: none;
+}
+
+.mobile-table-hint {
+  display: none;
+}
+
+.mobile-pdf-action-bar {
+  display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS (TABLET & CELL PHONE)
+   Architecture: @bonnie
+   ========================================================================== */
+
+/* TABLET BREAKPOINT (<= 960px) */
+@media (max-width: 960px) {
+  #app {
+    padding: 16px 20px 48px;
+    gap: 20px;
+  }
+
+  .papermache-topbar {
+    margin: -16px -20px 10px;
+    width: calc(100% + 40px);
+    padding: 10px 20px;
+  }
+
+  .brand-title-clean {
+    font-size: 2.3rem;
+  }
+
+  .sliders-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .dual-papers-container {
+    height: 65vh;
+    min-height: 500px;
+  }
+}
+
+/* CELL PHONE & COMPACT TABLET BREAKPOINT (<= 768px) */
+@media (max-width: 768px) {
+  body.point-reyes-theme {
+    background-attachment: scroll; /* Eliminates mobile Safari repainting stutter */
+    font-size: 16px;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  #app {
+    padding: 12px 14px 44px;
+    gap: 16px;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  body.is-embedded #app {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* STANDALONE TOPBAR ON MOBILE */
+  .papermache-topbar {
+    margin: -12px -14px 8px;
+    width: calc(100% + 28px);
+    padding: 8px 12px;
+  }
+
+  .topbar-inner {
+    gap: 8px;
+  }
+
+  .topbar-brand {
+    font-size: 0.72rem;
+    gap: 6px;
+  }
+
+  .topbar-logo {
+    width: 26px;
+    height: 26px;
+  }
+
+  .top-level-app-tabs {
+    gap: 2px;
+    padding: 2px 4px;
+  }
+
+  .app-tab-btn {
+    padding: 5px 10px;
+    font-size: 0.82rem;
+    min-height: 38px;
+  }
+
+  .topbar-research-link {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* BRAND HEADER ON MOBILE */
+  .app-header-centered {
+    padding: 6px 0 2px;
+  }
+
+  .brand-title-clean {
+    font-size: clamp(1.8rem, 8vw, 2.3rem);
+    letter-spacing: 0.06em;
+  }
+
+  .brand-tagline {
+    font-size: clamp(0.85rem, 3.4vw, 1.02rem);
+    text-align: center;
+    padding: 0 10px;
+    line-height: 1.4;
+  }
+
+  /* HERO DUAL DROPZONE & CLASH TRIGGER ON MOBILE */
+  .hero-dropzone-section {
+    padding: 16px 14px 20px;
+    border-radius: var(--radius-sm);
+  }
+
+  .hero-heading {
+    margin-bottom: 14px;
+  }
+
+  .hero-heading h2,
+  .hero-heading .hero-instruction {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .dropzone-duel-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .dropzone-box {
+    width: 100%;
+    padding: 14px 12px;
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+  }
+
+  .box-tag {
+    font-size: 0.75rem;
+    padding: 2px 10px;
+  }
+
+  .arxiv-input {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+    min-height: 44px; /* Touch ergonomics */
+  }
+
+  .file-drop-label {
+    padding: 12px 10px;
+    min-height: 48px;
+  }
+
+  .drop-text {
+    font-size: 0.82rem;
+  }
+
+  .clash-trigger-column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 4px 0;
+  }
+
+  .vs-glow-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .btn-hero-clash {
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.65);
+  }
+
+  .bolt-icon {
+    font-size: 1.45rem;
+  }
+
+  .clash-framework-note {
+    display: none; /* Conserved space on mobile; represented in hero framework strip below */
+  }
+
+  /* QUICK PRESET CHIPS - SWIPEABLE HORIZONTAL STRIP */
+  .quick-preset-chips {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 6px 2px 10px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .quick-preset-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chips-label {
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 0.8rem;
+    margin-right: 2px;
+  }
+
+  .chip-preset-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    min-height: 42px; /* 42px mobile thumb target */
+    font-size: 0.82rem;
+    border-radius: 20px;
+    scroll-snap-align: start;
+  }
+
+  /* HERO FRAMEWORK STRIP */
+  .hero-framework-strip {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .framework-strip-text {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  .how-calc-trigger {
+    min-height: 40px;
+    padding: 6px 16px;
+    font-size: 0.82rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  /* TOURNAMENT TABLE MOBILE */
+  .table-section {
+    padding: 14px 12px 18px;
+    border-radius: var(--radius-sm);
+  }
+
+  .table-header-clean {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .table-header-clean h2 {
+    font-size: 1.3rem;
+  }
+
+  .mobile-table-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 6px 10px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--accent-gold);
+    text-align: center;
+  }
+
+  .clash-table th,
+  .clash-table td {
+    padding: 10px 10px;
+    font-size: 0.84rem;
+    white-space: nowrap;
+  }
+
+  .clash-row {
+    min-height: 52px; /* Easy thumb tap target */
+  }
+
+  /* Sticky first column on horizontal swipe */
+  .clash-table th:first-child,
+  .clash-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: rgba(9, 15, 28, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-right: 1px solid var(--card-border);
+  }
+
+  /* CASE STUDY INSPECTION SECTION - MOBILE SEGMENTED CONTROL */
+  .case-study-inspection-section {
+    gap: 12px;
+  }
+
+  .mobile-paper-switcher {
+    display: flex;
+    align-items: center;
+    background: rgba(11, 18, 33, 0.85);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    padding: 4px;
+    gap: 6px;
+    margin-bottom: 8px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .mobile-paper-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 10px;
+    min-height: 46px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .mobile-paper-tab[data-paper="a"].active {
+    background: rgba(56, 189, 248, 0.16);
+    color: #fff;
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+  }
+
+  .mobile-paper-tab[data-paper="b"].active {
+    background: rgba(245, 158, 11, 0.16);
+    color: #fff;
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+  }
+
+  .mobile-tab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-a { background: var(--accent-cyan); box-shadow: 0 0 6px var(--accent-cyan); }
+  .dot-b { background: var(--accent-gold); box-shadow: 0 0 6px var(--accent-gold); }
+
+  .mobile-tab-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+  }
+
+  .dual-papers-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    gap: 0;
+  }
+
+  .paper-frame-container {
+    display: none;
+    height: 490px;
+    min-height: 420px;
+    width: 100%;
+    border-radius: var(--radius-sm);
+  }
+
+  .paper-frame-container.mobile-active {
+    display: flex;
+  }
+
+  .paper-frame-bar {
+    padding: 8px 12px;
+  }
+
+  .paper-bar-title {
+    max-width: 150px;
+    font-size: 0.90rem;
+  }
+
+  .open-ext-btn {
+    min-height: 36px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: rgba(245, 158, 11, 0.22);
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    color: #fff;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .mobile-pdf-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    background: rgba(14, 22, 38, 0.95);
+    border-top: 1px solid var(--card-border);
+  }
+
+  .mobile-direct-pdf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-serif);
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 16px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    transition: var(--transition);
+  }
+
+  .mobile-direct-pdf-btn:hover {
+    background: var(--accent-gold);
+    color: #000;
+  }
+
+  /* METRIC SENSITIVITY TUNER ON MOBILE */
+  .tuner-card {
+    padding: 14px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .tuner-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .tuner-title {
+    font-size: 0.95rem;
+  }
+
+  .btn-reset-sliders {
+    min-height: 36px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+  }
+
+  .sliders-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .slider-label-row {
+    font-size: 0.84rem;
+  }
+
+  .slider-val {
+    font-size: 0.90rem;
+    font-weight: 700;
+  }
+
+  .slider-group input[type="range"] {
+    height: 8px;
+    margin: 6px 0;
+  }
+
+  .slider-group input[type="range"]::-webkit-slider-thumb {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* SCOREBOARD HERO ON MOBILE */
+  .scoreboard-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "vs vs"
+      "pillara pillarb";
+    gap: 14px 10px;
+    padding: 18px 12px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  .score-vs-block {
+    grid-area: vs;
+    gap: 4px;
+  }
+
+  .pillar-a {
+    grid-area: pillara;
+  }
+
+  .pillar-b {
+    grid-area: pillarb;
+  }
+
+  .pillar-label {
+    font-size: 0.92rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 4px;
+  }
+
+  .pillar-value {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+    line-height: 1.1;
+  }
+
+  .pillar-sub {
+    font-size: 0.76rem;
+  }
+
+  .delta-v-badge {
+    font-size: 0.98rem;
+    padding: 4px 12px;
+  }
+
+  .verdict-banner-text {
+    font-size: 0.94rem;
+  }
+
+  .scoreboard-calc-btn {
+    min-height: 38px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* EXPANDABLE METHODOLOGY CARD ON MOBILE */
+  .methodology-card.open {
+    max-height: 3200px;
+    padding: 18px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .methodology-card-header {
+    margin-bottom: 12px;
+  }
+
+  .methodology-header-left h3 {
+    font-size: 1.15rem;
+  }
+
+  .btn-toggle-methodology {
+    min-height: 36px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+
+  .methodology-intro {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .components-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .component-item {
+    padding: 12px 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .component-symbol {
+    width: 28px;
+    height: 28px;
+    font-size: 1.15rem;
+  }
+
+  .component-title {
+    font-size: 0.94rem;
+  }
+
+  .component-item p {
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .methodology-summary-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    padding-top: 12px;
+  }
+
+  .formula-box {
+    font-size: 0.74rem;
+    width: 100%;
+    overflow-x: auto;
+    padding: 6px;
+  }
+
+  .full-methodology-btn {
+    min-height: 44px;
+    width: 100%;
+    justify-content: center;
+    font-size: 0.90rem;
+    border-radius: 22px;
+  }
+
+  /* ACCORDIONS ON MOBILE */
+  .accordion-item {
+    border-radius: var(--radius-sm);
+  }
+
+  .accordion-header {
+    padding: 14px 12px;
+    min-height: 50px;
+  }
+
+  .acc-title {
+    gap: 6px;
+  }
+
+  .acc-badge {
+    font-size: 0.72rem;
+    padding: 2px 6px;
+  }
+
+  .acc-name {
+    font-size: 0.95rem;
+  }
+
+  .accordion-item.open .accordion-body {
+    max-height: 1400px;
+    padding: 12px 12px 18px;
+  }
+
+  .invariants-bullet-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-left: 18px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .jump-to-page-btn {
+    align-self: flex-end;
+    min-height: 36px;
+    padding: 5px 12px;
+    font-size: 0.76rem;
+  }
+
+  .operator-critique-content {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .critique-entry h4 {
+    font-size: 0.98rem;
+    margin-bottom: 4px;
+  }
+
+  .critique-entry p {
+    font-size: 0.88rem;
+    padding: 10px 12px;
+    line-height: 1.5;
+  }
+}
+
+/* MICRO VIEWPORT / COMPACT PHONE POLISH (320px - 440px) */
+@media (max-width: 440px) {
+  #app {
+    padding: 8px 8px 36px;
+    gap: 12px;
+  }
+
+  .papermache-topbar {
+    margin: -8px -8px 6px;
+    width: calc(100% + 16px);
+    padding: 6px 8px;
+  }
+
+  .topbar-brand-name {
+    display: none; /* Conserve horizontal width on narrowest screens */
+  }
+
+  .app-tab-btn {
+    padding: 4px 8px;
+    font-size: 0.76rem;
+  }
+
+  .hero-dropzone-section {
+    padding: 14px 10px 16px;
+  }
+
+  .pillar-value {
+    font-size: 1.9rem;
+  }
+
+  .mobile-tab-title {
+    max-width: 105px;
+  }
 }

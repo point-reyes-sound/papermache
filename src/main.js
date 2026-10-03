@@ -356,6 +356,17 @@ class PapermacheApp {
     this.btnHeroClash = document.getElementById('btn-hero-clash');
     this.chipPresetBtns = document.querySelectorAll('.chip-preset-btn');
 
+    // Mobile Paper Switcher & Direct Links
+    this.mobilePaperSwitcher = document.getElementById('mobile-paper-switcher');
+    this.btnMobilePaperA = document.getElementById('btn-mobile-paper-a');
+    this.btnMobilePaperB = document.getElementById('btn-mobile-paper-b');
+    this.mobileTabTitleA = document.getElementById('mobile-tab-title-a');
+    this.mobileTabTitleB = document.getElementById('mobile-tab-title-b');
+    this.frameContainerA = document.getElementById('frame-container-a');
+    this.frameContainerB = document.getElementById('frame-container-b');
+    this.paperDirectLinkA = document.getElementById('paper-direct-link-a');
+    this.paperDirectLinkB = document.getElementById('paper-direct-link-b');
+
     // Methodology Explainer Card & Triggers
     this.methodologyCard = document.getElementById('methodology-card');
     this.btnCloseMethodology = document.getElementById('btn-close-methodology');
@@ -365,6 +376,47 @@ class PapermacheApp {
     this.setupAccordions();
     this.setupHeroDropzone();
     this.setupMethodologyExplainer();
+    this.setupMobilePaperSwitcher();
+  }
+
+  setupMobilePaperSwitcher() {
+    if (!this.btnMobilePaperA || !this.btnMobilePaperB) return;
+
+    this.btnMobilePaperA.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.setMobilePaperTab('a');
+    });
+
+    this.btnMobilePaperB.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.setMobilePaperTab('b');
+    });
+  }
+
+  setMobilePaperTab(tab) {
+    if (tab === 'a') {
+      if (this.btnMobilePaperA) {
+        this.btnMobilePaperA.classList.add('active');
+        this.btnMobilePaperA.setAttribute('aria-selected', 'true');
+      }
+      if (this.btnMobilePaperB) {
+        this.btnMobilePaperB.classList.remove('active');
+        this.btnMobilePaperB.setAttribute('aria-selected', 'false');
+      }
+      if (this.frameContainerA) this.frameContainerA.classList.add('mobile-active');
+      if (this.frameContainerB) this.frameContainerB.classList.remove('mobile-active');
+    } else {
+      if (this.btnMobilePaperB) {
+        this.btnMobilePaperB.classList.add('active');
+        this.btnMobilePaperB.setAttribute('aria-selected', 'true');
+      }
+      if (this.btnMobilePaperA) {
+        this.btnMobilePaperA.classList.remove('active');
+        this.btnMobilePaperA.setAttribute('aria-selected', 'false');
+      }
+      if (this.frameContainerB) this.frameContainerB.classList.add('mobile-active');
+      if (this.frameContainerA) this.frameContainerA.classList.remove('mobile-active');
+    }
   }
 
   setupMethodologyExplainer() {
@@ -579,6 +631,8 @@ class PapermacheApp {
       this.pdfFrameA.src = `${this.customPdfUrlA}#page=1&view=FitH`;
       this.paperBarTitleA.textContent = this.inputArxivA.value || this.customFileA.name;
       this.paperExternalA.href = this.customPdfUrlA;
+      if (this.paperDirectLinkA) this.paperDirectLinkA.href = this.customPdfUrlA;
+      if (this.mobileTabTitleA) this.mobileTabTitleA.textContent = `Paper A: ${this.inputArxivA.value || this.customFileA.name}`;
       this.pageBadgeA.textContent = 'p. 1 (Custom PDF)';
     }
 
@@ -586,6 +640,8 @@ class PapermacheApp {
       this.pdfFrameB.src = `${this.customPdfUrlB}#page=1&view=FitH`;
       this.paperBarTitleB.textContent = this.inputArxivB.value || this.customFileB.name;
       this.paperExternalB.href = this.customPdfUrlB;
+      if (this.paperDirectLinkB) this.paperDirectLinkB.href = this.customPdfUrlB;
+      if (this.mobileTabTitleB) this.mobileTabTitleB.textContent = `Paper B: ${this.inputArxivB.value || this.customFileB.name}`;
       this.pageBadgeB.textContent = 'p. 1 (Custom PDF)';
     }
 
@@ -710,18 +766,23 @@ class PapermacheApp {
 
   jumpToInvariant(target, pageNum, tag) {
     if (target === 'A') {
+      this.setMobilePaperTab('a');
       this.pdfFrameA.src = `${this.currentStudy.paperA.pdfUrl}#page=${pageNum}&view=FitH`;
       this.pageBadgeA.textContent = `p. ${pageNum} (${tag})`;
       this.pageBadgeA.classList.add('highlight-pulse');
       setTimeout(() => this.pageBadgeA.classList.remove('highlight-pulse'), 1400);
     } else {
+      this.setMobilePaperTab('b');
       this.pdfFrameB.src = `${this.currentStudy.paperB.pdfUrl}#page=${pageNum}&view=FitH`;
       this.pageBadgeB.textContent = `p. ${pageNum} (${tag})`;
       this.pageBadgeB.classList.add('highlight-pulse');
       setTimeout(() => this.pageBadgeB.classList.remove('highlight-pulse'), 1400);
     }
 
-    document.getElementById('case-study-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const section = document.getElementById('case-study-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   updateScoreboard() {
@@ -747,6 +808,10 @@ class PapermacheApp {
     this.paperBarTitleB.textContent = `${study.paperB.title} (${study.paperB.venue})`;
     this.paperExternalA.href = study.paperA.pdfUrl;
     this.paperExternalB.href = study.paperB.pdfUrl;
+    if (this.paperDirectLinkA) this.paperDirectLinkA.href = study.paperA.pdfUrl;
+    if (this.paperDirectLinkB) this.paperDirectLinkB.href = study.paperB.pdfUrl;
+    if (this.mobileTabTitleA) this.mobileTabTitleA.textContent = `Paper A: ${study.paperA.title}`;
+    if (this.mobileTabTitleB) this.mobileTabTitleB.textContent = `Paper B: ${study.paperB.title}`;
     this.pageBadgeA.textContent = `p. 1`;
     this.pageBadgeB.textContent = `p. 1`;
     this.pdfFrameA.src = `${study.paperA.pdfUrl}#page=1&view=FitH`;
